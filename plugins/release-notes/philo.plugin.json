@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "id": "release-notes",
+  "version": "0.1.0",
+  "name": {
+    "en": "Release Notes",
+    "zh": "版本发布简报"
+  },
+  "description": {
+    "en": "Draft release notes from a GitHub version range, with linked pull requests and issues.",
+    "zh": "根据 GitHub 版本区间、关联 PR 和 Issue 起草发布简报。"
+  },
+  "repository": "https://github.com/lovephilo/plugins/tree/main/plugins/release-notes",
+  "engines": {
+    "philo-plugin": "^1.1"
+  },
+  "tags": [
+    "github",
+    "releases"
+  ],
+  "main": "./src/index.ts",
+  "skills": [
+    "./skills"
+  ],
+  "templates": [
+    "./templates"
+  ],
+  "permissions": {
+    "network": [
+      "api.github.com"
+    ],
+    "secrets": [
+      {
+        "key": "github-token",
+        "title": "GitHub token",
+        "description": "Optional fine-grained read token for the repositories you summarize.",
+        "inject": {
+          "hosts": [
+            "api.github.com"
+          ],
+          "header": "Authorization",
+          "prefix": "Bearer "
+        }
+      }
+    ]
+  },
+  "settings": {
+    "type": "object",
+    "properties": {
+      "repository": {
+        "type": "string",
+        "title": "Default GitHub repository",
+        "description": "Repository in owner/repo form. Leave blank to specify it with each request.",
+        "default": ""
+      }
+    }
+  }
+}
