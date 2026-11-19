@@ -9,7 +9,7 @@
 ## 安装
 
 ```sh
-philo plugin install 'https://github.com/lovephilo/plugins/releases/download/release-notes-v0.1.0/release-notes-0.1.0.tgz#sha512-5L7IFSuAlY+pbyetSE2xYyMwhCZb5IMKsfPaHakaIM4r7FmyvRdBUsiDs0pdthG6EzhEL5yDCugcbKO1Q5aCMw=='
+philo plugin install github:lovephilo/plugins#release-notes
 ```
 
 在 Philo 会话中运行 `/release-notes v2.32.4 v2.32.5 psf/requests`。详见[发布简报使用说明](plugins/release-notes/README.md)。
@@ -29,6 +29,13 @@ philo plugin pack ./plugins/release-notes -o dist/release-notes-0.1.0.tgz
 
 ## 发布与目录
 
-使用 `<id>-v<version>` 标签创建 GitHub Release，并上传该版本的 `.tgz`。验证公开下载和 SHA-512 摘要后更新 [registry.json](registry.json)。更新目录时，将上一版的归档和摘要移入条目的 `versions`。
+每个插件的安装分支以插件 ID 命名，从已发布标签导出插件目录。以发布简报 v0.1.0 为例。
+
+```sh
+release_notes_commit=$(git subtree split --prefix=plugins/release-notes --quiet release-notes-v0.1.0) &&
+  git push origin "$release_notes_commit:refs/heads/release-notes"
+```
+
+使用 `<id>-v<version>` 标签创建 GitHub Release，并上传从同一标签打包的 `.tgz`。验证公开下载和 SHA-512 摘要后更新 [registry.json](registry.json)。更新目录时，将上一版的归档和摘要移入条目的 `versions`。
 
 嵌入 Philo 的宿主可以通过 `install.ManagerOptions.RegistryURLs` 显式使用[社区索引](https://raw.githubusercontent.com/lovephilo/plugins/main/registry.json)。
