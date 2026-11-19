@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "plugins": [
+    {
+      "id": "release-notes",
+      "name": {
+        "en": "Release Notes",
+        "zh": "版本发布简报"
+      },
+      "description": {
+        "en": "Draft release notes from a GitHub version range, with linked pull requests and issues.",
+        "zh": "根据 GitHub 版本区间、关联 PR 和 Issue 起草发布简报。"
+      },
+      "version": "0.1.0",
+      "author": "Philo",
+      "repository": "https://github.com/lovephilo/plugins/tree/main/plugins/release-notes",
+      "trust": "official",
+      "risk": "medium",
+      "badges": [
+        "tools",
+        "skills",
+        "templates"
+      ],
+      "tags": [
+        "github",
+        "releases"
+      ],
+      "tarball": "https://github.com/lovephilo/plugins/releases/download/release-notes-v0.1.0/release-notes-0.1.0.tgz",
+      "integrity": "sha512-5L7IFSuAlY+pbyetSE2xYyMwhCZb5IMKsfPaHakaIM4r7FmyvRdBUsiDs0pdthG6EzhEL5yDCugcbKO1Q5aCMw=="
+    }
+  ]
+}
